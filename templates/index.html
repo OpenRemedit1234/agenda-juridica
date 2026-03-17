@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Agenda Jurídica</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>⚖️ Agenda Jurídica</h1>
+    </header>
+
+    <div class="container">
+
+        <!-- BOTONES -->
+        <div class="acciones">
+            <a class="btn" href="/nueva_cita">+ Nueva cita</a>
+            <a class="btn" href="/nueva_nota">+ Nueva nota</a>
+        </div>
+
+        <!-- CITAS -->
+        <h2>📅 Citas</h2>
+
+        {% if data.citas %}
+        {% for cita in data.citas %}
+        <div class="card">
+            <b>{{ cita.fecha }} {{ cita.hora }}</b><br>
+            👤 {{ cita.cliente }}<br>
+            ⚖️ {{ cita.asunto }}
+
+            <!-- ELIMINAR CITA -->
+            <form method="POST" action="/eliminar_cita">
+                <input type="hidden" name="index" value="{{ loop.index0 }}">
+                <button type="submit">Eliminar</button>
+            </form>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No hay citas aún</p>
+        {% endif %}
+
+        <!-- NOTAS -->
+        <h2>📝 Notas</h2>
+
+        {% if data.notas %}
+        {% for nota in data.notas %}
+        <div class="card">
+            <b>{{ nota.titulo }}</b><br>
+            {{ nota.contenido }}
+
+            <!-- ELIMINAR NOTA -->
+            <form method="POST" action="/eliminar_nota">
+                <input type="hidden" name="index" value="{{ loop.index0 }}">
+                <button type="submit">Eliminar</button>
+            </form>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No hay notas aún</p>
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>

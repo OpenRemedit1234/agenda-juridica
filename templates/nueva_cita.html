@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nueva Cita</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Nueva Cita</h1>
+    </header>
+
+    <div class="container">
+        <form method="POST">
+
+            <label>Fecha</label>
+            <input type="date" name="fecha" required>
+
+            <label>Hora</label>
+            <input type="time" name="hora" required>
+
+            <label>Cliente</label>
+            <input type="text" name="cliente" placeholder="Nombre del cliente" required>
+
+            <label>Asunto</label>
+            <textarea name="asunto" placeholder="Descripción del caso" required></textarea>
+
+            <button type="submit">Guardar cita</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
