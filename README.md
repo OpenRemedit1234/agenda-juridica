@@ -65,8 +65,8 @@ http://127.0.0.1:5000
 
 ## 🔑 Acceso
 
-Usuario: admin
-Contraseña: 1234
+Usuario: Juan
+Contraseña: Juan
 
 *(puede modificarse en el archivo app.py)*
 
